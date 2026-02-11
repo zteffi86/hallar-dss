@@ -4,9 +4,20 @@ Structural Factors that Drive Risk Magnitude Across Scenarios
 These factors capture WHY risks differ between scenarios, not just THAT they differ.
 Each scenario is scored on these factors, and risks are sensitive to specific factors.
 
-v4 — February 2026
-  - F1 renamed: Eigendafjöldi → Flækjustig ákvarðanatöku
-  - S1: F4 raised 2→3, F7 raised 4→5
+v5 — February 2026
+  Scenario renumbering: grouped by ownership type
+    Group A (S1–S3): Borgarverkefni (city-led)
+    Group B (S4–S9): Sjóðaverkefni (pension fund-led)
+    Group C (S10–S12): Einkaframkvæmdir (bank-financed)
+  Scenario renames:
+    S4 (was S2): verkefnastjóri → fasteignaþróunarfélag
+    S5 (was S3): verkefnastjóri → nýtt fasteignaþróunarfélag
+    S6 (was S5): clarified stórt fasteignaþróunarfélag
+    S11 (was S7): stórir → meðalstórir verktakar
+    S12 (was S9): renamed Eigendur eru margir smáir verktakar
+  ID mapping (old → new):
+    S1→S1, S10→S2, S11→S3, S2→S4, S3→S5, S5→S6,
+    S4→S7, S12→S8, S6→S9, S8→S10, S7→S11, S9→S12
 """
 from __future__ import annotations
 
@@ -74,7 +85,7 @@ STRUCTURAL_FACTORS: Dict[str, StructuralFactor] = {
     ),
     "F6": StructuralFactor(
         id="F6",
-        name_is="Reykjavíkurorg sem eigandi",
+        name_is="Reykjavíkurborg sem eigandi",
         name_en="City as Owner",
         description_is="Er borgin eigandi að verkefninu?",
         description_en="Is the city an owner of the project?",
@@ -112,96 +123,115 @@ class ScenarioFactors:
 
 
 SCENARIO_FACTORS: Dict[str, ScenarioFactors] = {
+    # ═══════════════════════════════════════════════════════════
+    # GROUP A: BORGARVERKEFNI (City-led)
+    # ═══════════════════════════════════════════════════════════
     "S1": ScenarioFactors(
         scenario_id="S1",
         name_is="Borgin byggir innviði og selur byggingarrétt",
         name_en="Traditional City-Led",
-        # F4: 2→3 — city both plans and oversees execution through procurement
-        # F7: 4→5 — city runs everything, maximum enforcement power
+        # Zoning pathway A: city manages design via hugmyndasamkeppni/útboð
         F1=2, F2=2, F3=3, F4=3, F5=2, F6=5, F7=5,
     ),
     "S2": ScenarioFactors(
         scenario_id="S2",
-        name_is="Lífeyrissjóður eru eigendur sem ráða til sín verkefnastjóra",
-        name_en="Pension Fund + Project Manager (Fund Owns)",
-        F1=2, F2=3, F3=5, F4=3, F5=4, F6=1, F7=3,
+        name_is="Reykjavíkurborg og lífeyrissjóðir eru eigendur",
+        name_en="City + Pension Funds as Co-Owners",
+        # Was S10. Zoning pathway A (city involved in design)
+        # F1=3: city political process + fund investment process = genuine complexity
+        F1=3, F2=3, F3=4, F4=3, F5=3, F6=4, F7=4,
     ),
     "S3": ScenarioFactors(
         scenario_id="S3",
-        name_is="Lífeyrissjóður og verkefnastjóri eru meðeigendur",
-        name_en="Pension Fund + Manager as Co-Owner",
-        # F5: 4→5 — verkefnastjóri as co-owner matches scale definition exactly:
-        # "Faglegur stjóri með eignarhlut". Co-ownership aligns incentives
-        # and creates maximum personal accountability.
-        F1=2, F2=3, F3=5, F4=3, F5=5, F6=1, F7=3,
+        name_is="Reykjavíkurborg, lífeyrissjóðir og aðalverktaki eigendur",
+        name_en="City + Pension Funds + Head Contractor as Co-Owners",
+        # Was S11. Zoning pathway A+C hybrid (city and contractor both have design input)
+        # F1=4: three co-owners with fundamentally different decision cultures
+        F1=4, F2=5, F3=4, F4=5, F5=4, F6=3, F7=4,
     ),
+
+    # ═══════════════════════════════════════════════════════════
+    # GROUP B: SJÓÐAVERKEFNI (Pension fund-led)
+    # ═══════════════════════════════════════════════════════════
     "S4": ScenarioFactors(
         scenario_id="S4",
-        name_is="Lífeyrissjóður og aðalverktaki sameiginlegir eigendur",
-        name_en="Pension Fund + Head Contractor as Co-Owner",
-        F1=2, F2=5, F3=5, F4=5, F5=4, F6=1, F7=3,
+        name_is="Lífeyrissjóður er eigandi og ráðir fasteignaþróunarfélag",
+        name_en="Pension Fund Hires Real Estate Developer (Fund Owns)",
+        # Was S2. Zoning pathway B: developer designs, fund owns
+        # Renamed: verkefnastjóri → fasteignaþróunarfélag
+        F1=2, F2=3, F3=5, F4=3, F5=4, F6=1, F7=3,
     ),
     "S5": ScenarioFactors(
         scenario_id="S5",
-        name_is="Lífeyrissjóðir eigendur með fasteignaþróunarfélagi",
-        name_en="Pension Funds via Summa/Reitir + Subcontractors",
-        # F1: 3→2 — funds delegate to developer, don't co-manage day-to-day
-        # F5: 4→5 — fasteignaþróunarfélag as owner combines institutional
-        # depth (systems, staff, multi-project experience) with ownership
-        # incentives. This is the strongest professional management form.
-        F1=2, F2=4, F3=5, F4=4, F5=5, F6=1, F7=3,
+        name_is="Lífeyrissjóður og nýtt fasteignaþróunarfélag eru meðeigendur",
+        name_en="Pension Fund + New Real Estate Developer as Co-Owners",
+        # Was S3. Zoning pathway B: developer designs, co-ownership
+        # Renamed: verkefnastjóri → nýtt fasteignaþróunarfélag
+        # F5=5: co-ownership aligns incentives, even for newer developer
+        F1=2, F2=3, F3=5, F4=3, F5=5, F6=1, F7=3,
     ),
     "S6": ScenarioFactors(
         scenario_id="S6",
-        name_is="Innviðafélag lífeyrissjóða byggir innviði og selur BR",
-        name_en="Pension Fund Builds Infrastructure, Sells Rights",
-        # F3: 4→3 — construction buyers use bank financing, not fund patience
-        # F5: 3→2 — construction phase has no coordinated management
-        F1=3, F2=2, F3=3, F4=1, F5=2, F6=1, F7=2,
+        name_is="Lífeyrissjóðir og stórt fasteignaþróunarfélag eru meðeigendur",
+        name_en="Pension Funds + Established Real Estate Developer as Co-Owners",
+        # Was S5. Zoning pathway B: established developer designs
+        # F2=4: strong contractor network through established developer
+        # F5=5: institutional depth + ownership incentives
+        F1=2, F2=4, F3=5, F4=4, F5=5, F6=1, F7=3,
     ),
     "S7": ScenarioFactors(
         scenario_id="S7",
-        name_is="2–3 stórir verktakar eigendur með bankafjármögnun",
-        name_en="Bank Financing + 2-3 Contractors as Co-Owners",
-        F1=3, F2=4, F3=1, F4=4, F5=3, F6=1, F7=2,
+        name_is="Lífeyrissjóður og aðalverktaki sameiginlegir eigendur",
+        name_en="Pension Fund + Head Contractor as Co-Owners",
+        # Was S4. Zoning pathway C: builder designs
+        F1=2, F2=5, F3=5, F4=5, F5=4, F6=1, F7=3,
     ),
     "S8": ScenarioFactors(
         scenario_id="S8",
-        name_is="1 stór verktaki er eigandi með bankafjármögnun",
-        name_en="Bank Financing + Single Large Contractor",
-        F1=1, F2=4, F3=1, F4=5, F5=4, F6=1, F7=2,
+        name_is="Lífeyrissjóðir eru eigendur og ráða til sín aðalverktaka",
+        name_en="Pension Fund Hires Head Contractor (Fund Owns)",
+        # Was S12. Zoning pathway B/C hybrid: contractor provides
+        # buildability input but doesn't own the design process
+        # F2=4: head contractor is strong by definition
+        # F4=4: buildability input during planning, not full integration
+        F1=2, F2=4, F3=5, F4=4, F5=4, F6=1, F7=3,
     ),
     "S9": ScenarioFactors(
         scenario_id="S9",
-        name_is="Margir smáir verktakar — engin samhæfing",
-        name_en="Many Small Contractors",
-        # F3: 2→1 — small contractors are almost entirely bank-dependent
-        F1=5, F2=1, F3=1, F4=1, F5=1, F6=1, F7=1,
+        name_is="Innviðafélag lífeyrissjóða byggir innviði og selur BR",
+        name_en="Pension Fund Builds Infrastructure, Sells Building Rights",
+        # Was S6. Two-phase: fund builds infrastructure, then sells BR
+        # Building phase is essentially uncontrolled by the fund
+        # F3=3: construction buyers use bank financing, not fund patience
+        # F5=2: construction phase has no coordinated management
+        F1=3, F2=2, F3=3, F4=1, F5=2, F6=1, F7=2,
     ),
+
+    # ═══════════════════════════════════════════════════════════
+    # GROUP C: EINKAFRAMKVÆMDIR (Bank-financed / contractor-led)
+    # ═══════════════════════════════════════════════════════════
     "S10": ScenarioFactors(
         scenario_id="S10",
-        name_is="Reykjavíkurborg og lífeyrissjóðir eru eigendur",
-        name_en="City + Pension Funds as Co-Owners",
-        # F1: 2→3 — city political process + fund investment process = genuine complexity
-        F1=3, F2=3, F3=4, F4=3, F5=3, F6=4, F7=4,
+        name_is="1 stór verktaki er eigandi með bankafjármögnun",
+        name_en="Bank Financing + Single Large Contractor",
+        # Was S8. Zoning pathway C: builder designs
+        F1=1, F2=4, F3=1, F4=5, F5=4, F6=1, F7=2,
     ),
     "S11": ScenarioFactors(
         scenario_id="S11",
-        name_is="Reykjavíkurborg, lífeyrissjóðir og aðalverktaki eigendur",
-        name_en="City + PF + Head Contractor as Co-Owners",
-        # F1: 3→4 — three co-owners (city/fund/contractor) with fundamentally
-        # different decision cultures, timelines, and incentives
-        F1=4, F2=5, F3=4, F4=5, F5=4, F6=3, F7=4,
+        name_is="2–3 meðalstórir verktakar eigendur með bankafjármögnun",
+        name_en="Bank Financing + 2-3 Mid-Size Contractors as Co-Owners",
+        # Was S7. Zoning pathway C: builders design
+        # Renamed: stórir → meðalstórir
+        F1=3, F2=4, F3=1, F4=4, F5=3, F6=1, F7=2,
     ),
     "S12": ScenarioFactors(
         scenario_id="S12",
-        name_is="Lífeyrissjóðir eru eigendur og ráða til sín aðalverktaka",
-        name_en="Pension Fund + Head Contractor (Not Owner)",
-        # F2: 3→4 — head contractor is strong by definition, ownership doesn't change capability
-        # F4: 3→4 — even without ownership, aðalverktaki provides buildability
-        # input during planning due to technical expertise. Stronger integration
-        # than a generic project manager (S2) though not full integration (S4=5).
-        F1=2, F2=4, F3=5, F4=4, F5=4, F6=1, F7=3,
+        name_is="Eigendur eru margir smáir verktakar",
+        name_en="Many Small Contractors as Owners",
+        # Was S9. Worst-case baseline, no coordination
+        # F3=1: small contractors are almost entirely bank-dependent
+        F1=5, F2=1, F3=1, F4=1, F5=1, F6=1, F7=1,
     ),
 }
 
