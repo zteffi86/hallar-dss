@@ -130,11 +130,10 @@ SCENARIO_FACTORS: Dict[str, ScenarioFactors] = {
         scenario_id="S3",
         name_is="Lífeyrissjóður og verkefnastjóri eru meðeigendur",
         name_en="Pension Fund + Manager as Co-Owner",
-        # F5: 5→4 — verkefnastjóri provides good management but lacks
-        # institutional depth of a þróunarfyrirtæki or builder knowledge
-        # of an aðalverktaki. Co-ownership aligns incentives but a single
-        # PM cannot match a full development company's systems.
-        F1=2, F2=3, F3=5, F4=3, F5=4, F6=1, F7=3,
+        # F5: 4→5 — verkefnastjóri as co-owner matches scale definition exactly:
+        # "Faglegur stjóri með eignarhlut". Co-ownership aligns incentives
+        # and creates maximum personal accountability.
+        F1=2, F2=3, F3=5, F4=3, F5=5, F6=1, F7=3,
     ),
     "S4": ScenarioFactors(
         scenario_id="S4",
@@ -147,7 +146,10 @@ SCENARIO_FACTORS: Dict[str, ScenarioFactors] = {
         name_is="Lífeyrissjóðir eigendur með fasteignaþróunarfélagi",
         name_en="Pension Funds via Summa/Reitir + Subcontractors",
         # F1: 3→2 — funds delegate to developer, don't co-manage day-to-day
-        F1=2, F2=4, F3=5, F4=4, F5=4, F6=1, F7=3,
+        # F5: 4→5 — fasteignaþróunarfélag as owner combines institutional
+        # depth (systems, staff, multi-project experience) with ownership
+        # incentives. This is the strongest professional management form.
+        F1=2, F2=4, F3=5, F4=4, F5=5, F6=1, F7=3,
     ),
     "S6": ScenarioFactors(
         scenario_id="S6",
@@ -196,8 +198,10 @@ SCENARIO_FACTORS: Dict[str, ScenarioFactors] = {
         name_is="Lífeyrissjóðir eru eigendur og ráða til sín aðalverktaka",
         name_en="Pension Fund + Head Contractor (Not Owner)",
         # F2: 3→4 — head contractor is strong by definition, ownership doesn't change capability
-        # F4: 4→3 — without ownership, contractor enters after planning, not during
-        F1=2, F2=4, F3=5, F4=3, F5=4, F6=1, F7=3,
+        # F4: 3→4 — even without ownership, aðalverktaki provides buildability
+        # input during planning due to technical expertise. Stronger integration
+        # than a generic project manager (S2) though not full integration (S4=5).
+        F1=2, F2=4, F3=5, F4=4, F5=4, F6=1, F7=3,
     ),
 }
 
