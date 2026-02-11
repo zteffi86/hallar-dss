@@ -158,13 +158,14 @@ SCENARIO_FACTOR_JUSTIFICATIONS: Dict[str, Dict[str, str]] = {
             "Sama og S2 — verkefnastjóri stýrir en verktaki kemur inn seinna."
         ),
         "F5": (
-            "**Einkunn: 4 (Góð stjórnun)**\n\n"
+            "**Einkunn: 5 (Sterkasta fagleg stjórnun)**\n\n"
             "Verkefnastjóri er meðeigandi og hefur fjárhagslega hagsmuni "
-            "af árangri. Þetta skapar sterkan hvata. Hins vegar skortir "
-            "verkefnastjóra stofnanastyrkinn sem þróunarfyrirtæki hefur "
-            "(kerfi, starfsfólk, reynslu af mörgum verkefnum) og hann "
-            "hefur ekki tæknilega byggingaþekkingu aðalverktaka. "
-            "Góð en ekki framúrskarandi stjórnun."
+            "af árangri. Þetta er nákvæmlega það sem skalinn skilgreinir "
+            "sem 5: 'Faglegur stjóri með eignarhlut'. Meðeign skapar "
+            "hámarks persónulegan hvata — verkefnastjóri tapar eigin fé "
+            "ef verkefnið bregst. Þetta er sterkasta form persónulegrar "
+            "ábyrgðar verkefnastjóra, þó stofnanastyrkur sé minni en "
+            "hjá þróunarfyrirtæki (sjá S5 sem nær 5 á annan hátt)."
         ),
         "F6": (
             "**Einkunn: 1 (Borg ekki eigandi)**\n\n"
@@ -197,7 +198,9 @@ SCENARIO_FACTOR_JUSTIFICATIONS: Dict[str, Dict[str, str]] = {
         ),
         "F3": (
             "**Einkunn: 5 (Mjög þolinmótt fjármagn)**\n\n"
-            "Lífeyrissjóður fjármagnar meginhluta. Engir bankavextir. "
+            "Lífeyrissjóður fjármagnar meginhluta. Aðalverktaki leggur til "
+            "eigið fé (ekki bankalán) sem hluta af eignarframlagi sínu. "
+            "Engir bankavextir, engar afborganir. "
             "Fjármagnið þolir langan fjárfestingartíma og markaðssveiflur."
         ),
         "F4": (
@@ -255,9 +258,12 @@ SCENARIO_FACTOR_JUSTIFICATIONS: Dict[str, Dict[str, str]] = {
             "millistig milli sjóða og verktaka sem getur hægt á."
         ),
         "F5": (
-            "**Einkunn: 4 (Góð fagleg stjórnun)**\n\n"
-            "Summa/Reitir eru fagleg verkefnastjórnunarfyrirtæki með reynslu "
-            "af stórum verkefnum. Sterk fagleg geta."
+            "**Einkunn: 5 (Sterkasta fagleg stjórnun)**\n\n"
+            "Summa/Reitir eru fasteignaþróunarfyrirtæki sem eru meðeigendur "
+            "verkefnisins. Þau hafa bæði stofnanalegan styrk (kerfi, starfsfólk, "
+            "reynslu af mörgum stórum verkefnum) OG eignarhlut sem skapar "
+            "fjárhagslegan hvata. Þetta er sterkasta form faglegrar stjórnunar: "
+            "dýpt stofnunar ásamt persónulegum hagsmunum af árangri."
         ),
         "F6": (
             "**Einkunn: 1 (Borg ekki eigandi)**\n\n"
@@ -578,12 +584,13 @@ SCENARIO_FACTOR_JUSTIFICATIONS: Dict[str, Dict[str, str]] = {
             "Sama og S4 — lífeyrissjóður fjármagnar."
         ),
         "F4": (
-            "**Einkunn: 3 (Miðlungs samþætting)**\n\n"
-            "Aðalverktaki er á samningi, ekki meðeigandi. Hann getur veitt "
-            "ráðgjöf á skipulagsstigi en hefur ekki fjárhagslega hvata til "
-            "að fjárfesta tíma í hönnunarvinnu. Í framkvæmd kemur hann inn "
-            "eftir skipulagsákvörðun — ekki frá upphafi eins og í S4 þar sem "
-            "verktaki er eigandi og tekur þátt í öllum ákvörðunum frá degi eitt."
+            "**Einkunn: 4 (Góð samþætting)**\n\n"
+            "Aðalverktaki á samningi hefur tæknilega byggingarþekkingu sem "
+            "gerir honum kleift að veita byggjanleikaráðgjöf á skipulagsstigi, "
+            "jafnvel án eignarhluta. Þetta er meiri samþætting en verkefnastjóri "
+            "í S2 (sem skortir tæknilega byggingarþekkingu) en ekki full "
+            "samþætting eins og S4 þar sem verktaki er meðeigandi og tekur "
+            "þátt í öllum ákvörðunum frá degi eitt með fjárhagslega hvata."
         ),
         "F5": (
             "**Einkunn: 4 (Góð fagleg stjórnun)**\n\n"
